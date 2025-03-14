@@ -1,5 +1,7 @@
 # ROS1 Package Creation Tutorial
 
+Slide: http://luthuli.cs.uiuc.edu/~daf/courses/MAAV-2020/Slides/NewROSBlock.pdf
+
 ## Overview
 Creating a ROS1 package allows you to structure your robot's software components in a modular way. A package can include nodes, libraries, launch files, and configuration files. This tutorial will guide you through the steps of creating a ROS1 package, setting up dependencies, and using tools like `vcstool` for version control of multiple repositories. We'll focus on C++ (roscpp) development as it provides better performance and type safety for robotic systems.
 
@@ -10,20 +12,21 @@ Before creating a new package, make sure you have a ROS workspace. If you don't 
 
 1. Create a new workspace directory:
 
-    ```bash
+    ```
     mkdir -p ~/catkin_ws/src
+
     cd ~/catkin_ws/
     ```
 
 2. Build the workspace:
 
-    ```bash
+    ```
     catkin_make
     ```
 
 3. Source the workspace setup file:
 
-    ```bash
+    ``
     source devel/setup.bash
     ```
 

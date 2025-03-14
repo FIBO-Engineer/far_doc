@@ -3,6 +3,8 @@
 ## General
 Chapter 1: [VSCode Setup, SSH Key, GitHub Basics](general/vscode_ssh_github.md)
 
+Chapter 2: [ROS Overview + Package creation + Dependencies + vcstool](general/ros_package.md)
+
 <!-- * Ne - Create a new project.
 * `mkdocs serve` - Start the live-reloading docs server.
 * `mkdocs build` - Build the documentation site.
