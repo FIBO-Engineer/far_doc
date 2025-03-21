@@ -1,0 +1,1097 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://localhost/cpp/containers/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>C++ Containers: A Comprehensive Guide - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c-containers-a-comprehensive-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C++ Containers: A Comprehensive Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-sequence-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sequence Containers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Sequence Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-stdvector" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 std::vector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-stdlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 std::list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-stddeque" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 std::deque
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-associative-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Associative Containers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Associative Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-stdset" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 std::set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-stdmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 std::map
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-unordered-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Unordered Containers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Unordered Containers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-stdunordered_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 std::unordered_set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-stdunordered_map" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 std::unordered_map
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-backends-of-c-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Backends of C++ Containers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features-introduced-in-different-c-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features Introduced in Different C++ Versions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benchmark
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="c-containers-a-comprehensive-guide">C++ Containers: A Comprehensive Guide</h1>
+<h2 id="introduction">Introduction</h2>
+<p>C++ provides a powerful set of container classes within the Standard Template Library (STL). These containers help manage collections of objects efficiently. Containers in C++ are broadly classified into <strong>sequence containers</strong>, <strong>associative containers</strong>, and <strong>unordered containers</strong>.</p>
+<hr />
+<h2 id="1-sequence-containers">1. Sequence Containers</h2>
+<p>Sequence containers store elements in a linear fashion. The most commonly used sequence containers are:</p>
+<h3 id="11-stdvector">1.1 <strong>std::vector</strong></h3>
+<p>A dynamic array that grows as needed. It provides fast random access and efficient insertion/removal at the end. The underlying implementation uses a <strong>dynamic array</strong>, allowing O(1) access by index but requiring O(n) time for insertions or deletions in the middle.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (by index)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Insert at end</td>
+<td>Amortized O(1)</td>
+</tr>
+<tr>
+<td>Insert at middle</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Delete at end</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Delete at middle</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+int main() {
+    std::vector&lt;int&gt; v = {1, 2, 3, 4, 5};
+    v.push_back(6);
+
+    for (int num : v) {
+        std::cout &lt;&lt; num &lt;&lt; &quot; &quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p><strong>Use Case:</strong>
+- Best for <strong>large datasets</strong> that require frequent random access and occasional resizing.
+- Used in <strong>graphics processing, dynamic arrays, and buffer storage</strong>.</p>
+<h3 id="12-stdlist">1.2 <strong>std::list</strong></h3>
+<p>A doubly linked list that allows efficient insertion and deletion at any position. It provides O(1) insertions and deletions using iterators but requires O(n) time for index-based access.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (by index)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Insert at end</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Insert at middle</td>
+<td>O(1) with iterator</td>
+</tr>
+<tr>
+<td>Delete at end</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Delete at middle</td>
+<td>O(1) with iterator</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;list&gt;
+
+int main() {
+    std::list&lt;int&gt; lst = {1, 2, 3};
+    lst.push_front(0);
+    lst.push_back(4);
+
+    for (int num : lst) {
+        std::cout &lt;&lt; num &lt;&lt; &quot; &quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p><strong>Use Case:</strong>
+- Ideal when frequent <strong>insertions or deletions in the middle</strong> are needed.
+- Used in <strong>task scheduling, undo functionality, and managing ordered elements dynamically</strong>.</p>
+<h3 id="13-stddeque">1.3 <strong>std::deque</strong></h3>
+<p>A double-ended queue that supports fast insertions and deletions at both ends. Unlike <code>vector</code>, <code>deque</code> is implemented as a <strong>dynamic array of blocks</strong>, ensuring O(1) access but with additional memory overhead.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (by index)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Insert at end</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Insert at middle</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Delete at end</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Delete at middle</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;deque&gt;
+
+int main() {
+    std::deque&lt;int&gt; dq = {2, 3, 4};
+    dq.push_front(1);
+    dq.push_back(5);
+
+    for (int num : dq) {
+        std::cout &lt;&lt; num &lt;&lt; &quot; &quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p><strong>Use Case:</strong>
+- Useful for <strong>double-ended operations</strong> where insertions and deletions are needed from both ends.
+- Common in <strong>browser history tracking, task processing, and caching systems</strong>.</p>
+<hr />
+<h2 id="2-associative-containers">2. Associative Containers</h2>
+<p>Associative containers store elements in a sorted order based on keys.</p>
+<h3 id="21-stdset">2.1 <strong>std::set</strong></h3>
+<p>A sorted collection of unique elements. Implemented as a <strong>Red-Black Tree</strong>, allowing efficient O(log n) insertions, deletions, and lookups but no direct indexing.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (by index)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Insert at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Insert at middle</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>Delete at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete at middle</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;set&gt;
+
+int main() {
+    std::set&lt;int&gt; s = {4, 2, 5, 1, 3};
+    s.insert(3);
+
+    for (int num : s) {
+        std::cout &lt;&lt; num &lt;&lt; &quot; &quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p><strong>Use Case:</strong>
+- Useful for maintaining <strong>unique elements in sorted order</strong>.
+- Used in <strong>leaderboards, unique word counting, and managing sorted records</strong>.</p>
+<h3 id="22-stdmap">2.2 <strong>std::map</strong></h3>
+<p>A key-value pair container sorted by keys. Implemented as a <strong>Red-Black Tree</strong>, similar to <code>set</code>, providing O(log n) operations for insertions, deletions, and lookups.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (by index)</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>Insert at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Insert at middle</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>Delete at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete at middle</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;map&gt;
+
+int main() {
+    std::map&lt;int, std::string&gt; m;
+    m[1] = &quot;one&quot;;
+    m[2] = &quot;two&quot;;
+    m[3] = &quot;three&quot;;
+
+    for (const auto&amp; [key, value] : m) {
+        std::cout &lt;&lt; key &lt;&lt; &quot;: &quot; &lt;&lt; value &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p><strong>Use Case:</strong>
+- Best when a <strong>sorted dictionary-like structure</strong> is needed.
+- Used in <strong>configuration settings, caching mechanisms, and associative data storage</strong>.</p>
+<hr />
+<h2 id="3-unordered-containers">3. Unordered Containers</h2>
+<p>Unordered containers use <strong>hash tables</strong> for fast access and do not maintain order.</p>
+<h3 id="31-stdunordered_set">3.1 <strong>std::unordered_set</strong></h3>
+<p>A collection of unique elements with fast lookup. Implemented as a <strong>hash table</strong>, allowing O(1) average time complexity for most operations, but worst-case O(n) due to hash collisions.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (by index)</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Insert at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Insert at middle</td>
+<td>O(1) (average), O(n) (worst)</td>
+</tr>
+<tr>
+<td>Delete at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete at middle</td>
+<td>O(1) (average), O(n) (worst)</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use Case:</strong>
+- Ideal for <strong>quick membership testing and duplicate filtering</strong>.
+- Used in <strong>hash-based search, spam filtering, and rapid existence checking</strong>.</p>
+<h3 id="32-stdunordered_map">3.2 <strong>std::unordered_map</strong></h3>
+<p>A hash table-based key-value container. Similar to <code>unordered_set</code>, it provides O(1) average-time operations but degrades to O(n) in worst-case scenarios due to hash collisions.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access (by index)</td>
+<td>O(1) (average), O(n) (worst)</td>
+</tr>
+<tr>
+<td>Insert at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Insert at middle</td>
+<td>O(1) (average), O(n) (worst)</td>
+</tr>
+<tr>
+<td>Delete at end</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Delete at middle</td>
+<td>O(1) (average), O(n) (worst)</td>
+</tr>
+<tr>
+<td>Get size</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;unordered_map&gt;
+
+int main() {
+    std::unordered_map&lt;std::string, int&gt; um;
+    um[&quot;apple&quot;] = 3;
+    um[&quot;banana&quot;] = 5;
+    um[&quot;orange&quot;] = 7;
+
+    for (const auto&amp; [key, value] : um) {
+        std::cout &lt;&lt; key &lt;&lt; &quot;: &quot; &lt;&lt; value &lt;&lt; &quot;\n&quot;;
+    }
+    return 0;
+}
+</code></pre>
+<p><strong>Use Case:</strong>
+- Best for <strong>fast key-value lookups</strong> without maintaining order.
+- Used in <strong>database indexing, word frequency analysis, and fast data retrieval</strong>.</p>
+<hr />
+<h2 id="understanding-the-backends-of-c-containers">Understanding the Backends of C++ Containers</h2>
+<p>Each container in the STL is backed by a specific data structure, optimized for different operations:</p>
+<ul>
+<li><strong>Dynamic Array (<code>std::vector</code>)</strong>: Uses a contiguous memory block, allowing fast index access but costly insertions/deletions in the middle.</li>
+<li><strong>Doubly Linked List (<code>std::list</code>)</strong>: Uses nodes connected via pointers, allowing O(1) insertions/deletions anywhere but O(n) access by index.</li>
+<li><strong>Dynamic Array of Blocks (<code>std::deque</code>)</strong>: A segmented memory model that supports O(1) insertions and deletions at both ends.</li>
+<li><strong>Red-Black Tree (<code>std::set</code>, <code>std::map</code>)</strong>: A self-balancing binary search tree that ensures O(log n) operations and maintains elements in sorted order.</li>
+<li><strong>Hash Table (<code>std::unordered_set</code>, <code>std::unordered_map</code>)</strong>: Uses hashing for O(1) average-time access, but worst-case performance can degrade to O(n) due to collisions.</li>
+</ul>
+<h2 id="features-introduced-in-different-c-versions">Features Introduced in Different C++ Versions</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Introduced in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std::vector, std::list, std::deque, std::set, std::map</td>
+<td>C++98</td>
+</tr>
+<tr>
+<td>Range-based for loop</td>
+<td>C++11</td>
+</tr>
+<tr>
+<td>std::unordered_map, std::unordered_set</td>
+<td>C++11</td>
+</tr>
+<tr>
+<td>Structured bindings (<code>auto&amp; [key, value]</code>)</td>
+<td>C++17</td>
+</tr>
+</tbody>
+</table>
+<h2 id="benchmark">Benchmark</h2>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;set&gt;
+#include &lt;unordered_set&gt;
+#include &lt;chrono&gt;
+#include &lt;random&gt;
+
+const int ELEMENTS = 100000;
+
+void benchmark_vector() {
+    std::vector&lt;int&gt; vec;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i &lt; ELEMENTS; ++i) {
+        vec.push_back(i);
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Vector push_back time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    for (const auto&amp; val : vec) {
+        volatile int x = val;
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Vector iteration time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i &lt; ELEMENTS; i += 1000) {
+        volatile int x = vec[i];
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Vector random access time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+}
+
+void benchmark_list() {
+    std::list&lt;int&gt; lst;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i &lt; ELEMENTS; ++i) {
+        lst.push_back(i);
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;List push_back time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    for (const auto&amp; val : lst) {
+        volatile int x = val;
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;List iteration time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    auto it = lst.begin();
+    for (int i = 0; i &lt; ELEMENTS; i += 1000) {
+        std::advance(it, 1000);
+        volatile int x = *it;
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;List pseudo-random access time (advance iterator): &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+}
+
+void benchmark_set() {
+    std::set&lt;int&gt; s;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i &lt; ELEMENTS; ++i) {
+        s.insert(i);
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Set insertion time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    for (const auto&amp; val : s) {
+        volatile int x = val;
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Set iteration time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i &lt; ELEMENTS; i += 1000) {
+        volatile bool found = s.find(i) != s.end();
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Set lookup time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+}
+
+void benchmark_unordered_set() {
+    std::unordered_set&lt;int&gt; us;
+
+    auto start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i &lt; ELEMENTS; ++i) {
+        us.insert(i);
+    }
+    auto end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Unordered Set insertion time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    for (const auto&amp; val : us) {
+        volatile int x = val;
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Unordered Set iteration time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+
+    start = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i &lt; ELEMENTS; i += 1000) {
+        volatile bool found = us.find(i) != us.end();
+    }
+    end = std::chrono::high_resolution_clock::now();
+    std::cout &lt;&lt; &quot;Unordered Set lookup time: &quot;
+              &lt;&lt; std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start).count()
+              &lt;&lt; &quot; µs\n&quot;;
+}
+
+int main() {
+    std::cout &lt;&lt; &quot;Benchmarking std::vector vs std::list vs std::set vs std::unordered_set\n&quot;;
+
+    std::cout &lt;&lt; &quot;\n--- std::vector ---\n&quot;;
+    benchmark_vector();
+
+    std::cout &lt;&lt; &quot;\n--- std::list ---\n&quot;;
+    benchmark_list();
+
+    std::cout &lt;&lt; &quot;\n--- std::set ---\n&quot;;
+    benchmark_set();
+
+    std::cout &lt;&lt; &quot;\n--- std::unordered_set ---\n&quot;;
+    benchmark_unordered_set();
+
+    return 0;
+}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

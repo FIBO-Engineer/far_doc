@@ -1,0 +1,1206 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://localhost/general/ros_package/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>ROS1 Package Creation Tutorial - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ros1-package-creation-tutorial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ROS1 Package Creation Tutorial
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-setup-your-ros-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Setup Your ROS Workspace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-new-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create a New Package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-explore-the-package-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Explore the Package Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-build-the-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Build the Package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-source-the-workspace-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Source the Workspace Again
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-create-a-c-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Create a C++ Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-update-cmakeliststxt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7: Update CMakeLists.txt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8-build-the-package-again" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8: Build the Package Again
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-9-create-a-launch-file-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 9: Create a Launch File (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-10-run-the-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 10: Run the Package
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependencies Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-ros-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding ROS Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-available-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Available Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-dependencies-in-packagexml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Dependencies in package.xml
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of Dependencies in package.xml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-world-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-world Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packagexml-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package.xml Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmakeliststxt-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMakeLists.txt Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-management-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Management Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-custom-messages-services-or-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Custom Messages, Services, or Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#troubleshooting-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-external-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using External Libraries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-multiple-repositories-with-vcstool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Multiple Repositories with vcstool
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Multiple Repositories with vcstool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-install-vcstool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Install vcstool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-create-a-repos-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Create a .repos File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-import-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Import Repositories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-update-all-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Update All Repositories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-check-status-of-all-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Check Status of All Repositories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-export-current-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6: Export Current Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-complete-c-ros-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Complete C++ ROS Package
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-for-ros-c-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices for ROS C++ Packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ros1-package-creation-tutorial">ROS1 Package Creation Tutorial</h1>
+<p>Slide: http://luthuli.cs.uiuc.edu/~daf/courses/MAAV-2020/Slides/NewROSBlock.pdf</p>
+<h2 id="overview">Overview</h2>
+<p>Creating a ROS1 package allows you to structure your robot's software components in a modular way. A package can include nodes, libraries, launch files, and configuration files. This tutorial will guide you through the steps of creating a ROS1 package, setting up dependencies, and using tools like <code>vcstool</code> for version control of multiple repositories. We'll focus on C++ (roscpp) development as it provides better performance and type safety for robotic systems.</p>
+<h2 id="procedure">Procedure</h2>
+<h3 id="step-1-setup-your-ros-workspace">Step 1: Setup Your ROS Workspace</h3>
+<p>Before creating a new package, make sure you have a ROS workspace. If you don't already have one, follow these steps:</p>
+<ol>
+<li>
+<p>Create a new workspace directory:</p>
+<p>```
+mkdir -p ~/catkin_ws/src</p>
+<p>cd ~/catkin_ws/
+```</p>
+</li>
+<li>
+<p>Build the workspace:</p>
+<p><code>catkin_make</code></p>
+</li>
+<li>
+<p>Source the workspace setup file:</p>
+<p>``
+source devel/setup.bash
+```</p>
+</li>
+</ol>
+<h3 id="step-2-create-a-new-package">Step 2: Create a New Package</h3>
+<p>To create a new ROS package, navigate to the <code>src</code> directory of your workspace and run the following command:</p>
+<pre><code class="language-bash">cd ~/catkin_ws/src
+catkin_create_pkg tutorial_02 std_msgs roscpp
+</code></pre>
+<p>This will create a package named <code>tutorial_02</code> with dependencies on <code>std_msgs</code> and <code>roscpp</code> (C++ ROS client library).</p>
+<h3 id="step-3-explore-the-package-structure">Step 3: Explore the Package Structure</h3>
+<p>After creating the package, take a moment to understand its structure:</p>
+<pre><code class="language-bash">cd tutorial_02
+ls
+</code></pre>
+<p>You should see:
+- <code>CMakeLists.txt</code>: Build instructions for CMake
+- <code>package.xml</code>: Package metadata and dependencies
+- <code>include/tutorial_02/</code>: Headers directory for your C++ code
+- <code>src/</code>: Source directory for your C++ implementations</p>
+<h3 id="step-4-build-the-package">Step 4: Build the Package</h3>
+<p>Return to the root of your workspace and build it using catkin_make:</p>
+<pre><code class="language-bash">cd ~/catkin_ws
+catkin_make
+</code></pre>
+<h3 id="step-5-source-the-workspace-again">Step 5: Source the Workspace Again</h3>
+<p>Source the workspace setup file to ensure that ROS recognizes the newly created package:</p>
+<pre><code class="language-bash">source devel/setup.bash
+</code></pre>
+<h3 id="step-6-create-a-c-node">Step 6: Create a C++ Node</h3>
+<p>Create a C++ source file in the src directory, for example <code>talker.cpp</code>:</p>
+<pre><code class="language-bash">touch ~/catkin_ws/src/tutorial_02/src/talker.cpp
+</code></pre>
+<p>Edit the <code>talker.cpp</code> file with your favorite editor and add the following code:</p>
+<pre><code class="language-cpp">#include &lt;ros/ros.h&gt;
+#include &lt;std_msgs/String.h&gt;
+
+int main(int argc, char **argv)
+{
+  // Initialize ROS node
+  ros::init(argc, argv, &quot;talker&quot;);
+
+  // Create a node handle
+  ros::NodeHandle n;
+
+  // Create a publisher object
+  ros::Publisher chatter_pub = n.advertise&lt;std_msgs::String&gt;(&quot;chatter&quot;, 10);
+
+  // Set publishing rate (1 Hz)
+  ros::Rate loop_rate(1);
+
+  int count = 0;
+  while (ros::ok())
+  {
+    // Create message
+    std_msgs::String msg;
+    std::stringstream ss;
+    ss &lt;&lt; &quot;Hello, ROS! &quot; &lt;&lt; count;
+    msg.data = ss.str();
+
+    // Log and publish
+    ROS_INFO(&quot;%s&quot;, msg.data.c_str());
+    chatter_pub.publish(msg);
+
+    // Process callbacks and sleep
+    ros::spinOnce();
+    loop_rate.sleep();
+    ++count;
+  }
+
+  return 0;
+}
+</code></pre>
+<h3 id="step-7-update-cmakeliststxt">Step 7: Update CMakeLists.txt</h3>
+<p>You need to update the CMakeLists.txt to build your new C++ node. Add the following to your CMakeLists.txt (around line 136, after the existing boilerplate):</p>
+<pre><code class="language-cmake">add_executable(talker src/talker.cpp)
+target_link_libraries(talker ${catkin_LIBRARIES})
+</code></pre>
+<h3 id="step-8-build-the-package-again">Step 8: Build the Package Again</h3>
+<pre><code class="language-bash">cd ~/catkin_ws
+catkin_make
+</code></pre>
+<h3 id="step-9-create-a-launch-file-optional">Step 9: Create a Launch File (Optional)</h3>
+<p>Create a launch file in the launch directory of your package to run your nodes:</p>
+<pre><code class="language-bash">mkdir -p ~/catkin_ws/src/tutorial_02/launch
+</code></pre>
+<p>Create the <code>talker.launch</code> file:</p>
+<pre><code class="language-xml">&lt;launch&gt;
+    &lt;node name=&quot;talker&quot; pkg=&quot;tutorial_02&quot; type=&quot;talker&quot; output=&quot;screen&quot; /&gt;
+&lt;/launch&gt;
+</code></pre>
+<p>Note that the type attribute doesn't have a file extension for C++ executables, unlike Python scripts.</p>
+<h3 id="step-10-run-the-package">Step 10: Run the Package</h3>
+<p>Now you can run the package using ROS tools like <code>rosrun</code> or <code>roslaunch</code>.</p>
+<p>To run the node directly:</p>
+<pre><code class="language-bash">rosrun tutorial_02 talker
+</code></pre>
+<p>Or, to launch the node using the launch file:</p>
+<pre><code class="language-bash">roslaunch tutorial_02 talker.launch
+</code></pre>
+<h2 id="dependencies-management">Dependencies Management</h2>
+<h3 id="understanding-ros-dependencies">Understanding ROS Dependencies</h3>
+<p>ROS packages can have various types of dependencies, and they must be properly declared in both <code>package.xml</code> and <code>CMakeLists.txt</code>. Properly managing dependencies is crucial for ensuring your package builds correctly and can be distributed to others.</p>
+<h3 id="checking-available-dependencies">Checking Available Dependencies</h3>
+<p>Before adding dependencies to your package, you should check if they are available for your ROS distribution. The official repository of available ROS packages is maintained at:</p>
+<pre><code>https://github.com/ros/rosdistro
+</code></pre>
+<p>To find available packages for your specific ROS distribution (e.g., Noetic, Melodic), navigate to:</p>
+<pre><code>https://github.com/ros/rosdistro/blob/master/[DISTRO]/distribution.yaml
+</code></pre>
+<p>For system dependencies (non-ROS packages), you should also check:</p>
+<pre><code>https://github.com/ros/rosdistro/tree/master/rosdep/base.yaml
+</code></pre>
+<p>This file lists system dependencies that can be installed using <code>rosdep</code>, which helps manage both ROS and non-ROS dependencies.</p>
+<p>This file contains all officially available packages for your distribution, along with version information and repository URLs. Always check these resources before adding dependencies to ensure they are available for your ROS distribution.</p>
+<h3 id="types-of-dependencies-in-packagexml">Types of Dependencies in package.xml</h3>
+<p>In ROS package.xml, there are different types of dependency tags, each serving a specific purpose in the build process. Understanding these differences is crucial for beginners:</p>
+<ol>
+<li><strong><code>&lt;build_depend&gt;</code></strong>: These packages are required at <strong>build time</strong></li>
+<li>Needed when compiling your package</li>
+<li>Example: header files, compile-time libraries</li>
+<li>
+<p>These dependencies are NOT exposed to packages depending on yours</p>
+</li>
+<li>
+<p><strong><code>&lt;build_export_depend&gt;</code></strong>: These packages are required for building packages that depend on yours</p>
+</li>
+<li>When other packages build against your package, they also need these dependencies</li>
+<li>
+<p>Example: header files that are included in your public headers</p>
+</li>
+<li>
+<p><strong><code>&lt;exec_depend&gt;</code></strong>: These packages are required at <strong>runtime</strong></p>
+</li>
+<li>Needed when actually running your package</li>
+<li>Example: shared libraries, ROS message runtime packages</li>
+<li>
+<p>Required for users who just want to run your package without building it</p>
+</li>
+<li>
+<p><strong><code>&lt;depend&gt;</code></strong>: A convenience tag that combines all three dependency types</p>
+</li>
+<li>Equivalent to declaring <code>&lt;build_depend&gt;</code>, <code>&lt;build_export_depend&gt;</code>, and <code>&lt;exec_depend&gt;</code></li>
+<li>Use this when a package is needed for all three stages (common for most ROS dependencies)</li>
+</ol>
+<h4 id="real-world-example">Real-world Example</h4>
+<p>Let's use a practical example to understand these differences:</p>
+<pre><code class="language-xml">&lt;!-- For a C++ package that uses custom messages --&gt;
+&lt;!-- message_generation is only needed at build time --&gt;
+&lt;build_depend&gt;message_generation&lt;/build_depend&gt;
+
+&lt;!-- message_runtime is only needed at runtime --&gt;
+&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;
+
+&lt;!-- roscpp is needed at all stages --&gt;
+&lt;depend&gt;roscpp&lt;/depend&gt;
+
+&lt;!-- When using an external library --&gt;
+&lt;build_depend&gt;boost&lt;/build_depend&gt;       &lt;!-- If only used internally --&gt;
+&lt;depend&gt;opencv&lt;/depend&gt;                  &lt;!-- If used in public headers --&gt;
+</code></pre>
+<p>This distinction is particularly important for:
+- Custom message packages (message_generation vs message_runtime)
+- Large dependencies that shouldn't be propagated to dependents
+- Packages with different build and runtime components</p>
+<h3 id="packagexml-dependencies">Package.xml Dependencies</h3>
+<p>In your <code>package.xml</code>, dependencies are declared using these tags:</p>
+<pre><code class="language-xml">&lt;!-- For C++ packages --&gt;
+&lt;build_depend&gt;roscpp&lt;/build_depend&gt;
+&lt;build_export_depend&gt;roscpp&lt;/build_export_depend&gt;
+&lt;exec_depend&gt;roscpp&lt;/exec_depend&gt;
+
+&lt;!-- Other common dependencies --&gt;
+&lt;build_depend&gt;std_msgs&lt;/build_depend&gt;
+&lt;build_export_depend&gt;std_msgs&lt;/build_export_depend&gt;
+&lt;exec_depend&gt;std_msgs&lt;/exec_depend&gt;
+</code></pre>
+<p>For simplicity, when a package is needed at all stages, you can use the combined <code>&lt;depend&gt;</code> tag:</p>
+<pre><code class="language-xml">&lt;depend&gt;roscpp&lt;/depend&gt;
+&lt;depend&gt;std_msgs&lt;/depend&gt;
+</code></pre>
+<h3 id="cmakeliststxt-dependencies">CMakeLists.txt Dependencies</h3>
+<p>In <code>CMakeLists.txt</code>, dependencies are specified using <code>find_package</code>:</p>
+<pre><code class="language-cmake">find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  std_msgs
+)
+</code></pre>
+<p>It's important to ensure that all packages listed in <code>find_package</code> are also listed in your <code>package.xml</code> as either <code>&lt;build_depend&gt;</code> or <code>&lt;depend&gt;</code>.</p>
+<h3 id="dependency-management-best-practices">Dependency Management Best Practices</h3>
+<ol>
+<li><strong>Minimize Dependencies</strong>: Only include packages you actually need</li>
+<li><strong>Be Specific</strong>: Use the most specific dependency type for each package</li>
+<li><strong>Version Management</strong>: For non-ROS dependencies, consider specifying version requirements:
+   <code>xml
+   &lt;build_depend version_gte="1.2.3"&gt;some_package&lt;/build_depend&gt;</code></li>
+<li><strong>Check Dependencies</strong>: Use <code>rosdep check</code> to verify all dependencies are installed:
+   <code>bash
+   rosdep check --from-paths src --ignore-src --rosdistro noetic</code></li>
+<li><strong>Install Missing Dependencies</strong>: Use <code>rosdep</code> to install missing dependencies:
+   <code>bash
+   rosdep install --from-paths src --ignore-src --rosdistro noetic -y</code></li>
+</ol>
+<h3 id="adding-custom-messages-services-or-actions">Adding Custom Messages, Services, or Actions</h3>
+<p>If your package defines custom messages, services, or actions, you'll need additional configuration:</p>
+<ol>
+<li>Add message generation dependencies:</li>
+</ol>
+<pre><code class="language-xml">&lt;!-- In package.xml --&gt;
+&lt;build_depend&gt;message_generation&lt;/build_depend&gt;
+&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;
+</code></pre>
+<ol>
+<li>Update CMakeLists.txt:</li>
+</ol>
+<pre><code class="language-cmake">find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  std_msgs
+  message_generation
+)
+
+# Add message files
+add_message_files(
+  FILES
+  MyCustomMsg.msg
+)
+
+# Generate messages
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
+# Specify catkin package dependencies
+catkin_package(
+  CATKIN_DEPENDS roscpp std_msgs message_runtime
+)
+</code></pre>
+<p>After adding the dependencies, remember to run:</p>
+<pre><code class="language-bash">cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+</code></pre>
+<h3 id="troubleshooting-dependencies">Troubleshooting Dependencies</h3>
+<p>Common dependency issues and solutions:</p>
+<ol>
+<li><strong>Missing Dependency</strong>: If <code>catkin_make</code> fails with "Could not find a package configuration file provided by [PACKAGE]"</li>
+<li>Check if the package is installed: <code>apt-cache policy ros-[distro]-[package]</code></li>
+<li>
+<p>Install using rosdep: <code>rosdep install --from-paths src --ignore-src -y</code></p>
+</li>
+<li>
+<p><strong>Incompatible Versions</strong>: If you get runtime errors about mismatched message definitions</p>
+</li>
+<li>Ensure all packages are from the same ROS distribution</li>
+<li>
+<p>Check for conflicting packages with <code>rospack profile</code></p>
+</li>
+<li>
+<p><strong>Missing Libraries</strong>: If you get linker errors</p>
+</li>
+<li>Ensure the library is correctly listed in <code>target_link_libraries</code></li>
+<li>Check if library paths are correct with <code>catkin config --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON</code></li>
+</ol>
+<h2 id="using-external-libraries">Using External Libraries</h2>
+<p>To use external C++ libraries in your ROS package:</p>
+<ol>
+<li>Add the dependency in <code>package.xml</code>:</li>
+</ol>
+<pre><code class="language-xml">&lt;build_depend&gt;libname&lt;/build_depend&gt;
+&lt;exec_depend&gt;libname&lt;/exec_depend&gt;
+</code></pre>
+<ol>
+<li>Find and link the library in <code>CMakeLists.txt</code>:</li>
+</ol>
+<pre><code class="language-cmake">find_package(LibName REQUIRED)
+include_directories(${LIBNAME_INCLUDE_DIRS})
+target_link_libraries(your_node ${catkin_LIBRARIES} ${LIBNAME_LIBRARIES})
+</code></pre>
+<ol>
+<li>For system libraries not found by CMake, you might need to use pkg-config:</li>
+</ol>
+<pre><code class="language-cmake">find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBNAME REQUIRED libname)
+include_directories(${LIBNAME_INCLUDE_DIRS})
+link_directories(${LIBNAME_LIBRARY_DIRS})
+add_definitions(${LIBNAME_CFLAGS})
+target_link_libraries(your_node ${catkin_LIBRARIES} ${LIBNAME_LIBRARIES})
+</code></pre>
+<h2 id="managing-multiple-repositories-with-vcstool">Managing Multiple Repositories with vcstool</h2>
+<p><code>vcstool</code> (Version Control System tool) allows you to manage multiple git repositories in your ROS workspace efficiently.</p>
+<h3 id="step-1-install-vcstool">Step 1: Install vcstool</h3>
+<p>First, install vcstool:</p>
+<pre><code class="language-bash">sudo apt-get install python3-vcstool
+</code></pre>
+<h3 id="step-2-create-a-repos-file">Step 2: Create a .repos File</h3>
+<p>Create a YAML file that specifies your repositories. For example, create <code>my_repos.repos</code>:</p>
+<pre><code class="language-yaml">repositories:
+  src/tutorial_02:
+    type: git
+    url: https://github.com/username/tutorial_02.git
+    version: main
+  src/dependency_package:
+    type: git
+    url: https://github.com/username/dependency_package.git
+    version: main
+</code></pre>
+<h3 id="step-3-import-repositories">Step 3: Import Repositories</h3>
+<p>Use vcstool to clone all repositories:</p>
+<pre><code class="language-bash">vcs import ~/catkin_ws &lt; my_repos.repos
+</code></pre>
+<h3 id="step-4-update-all-repositories">Step 4: Update All Repositories</h3>
+<p>To update all repositories:</p>
+<pre><code class="language-bash">cd ~/catkin_ws
+vcs pull src
+</code></pre>
+<h3 id="step-5-check-status-of-all-repositories">Step 5: Check Status of All Repositories</h3>
+<p>To see the status of all repositories:</p>
+<pre><code class="language-bash">vcs status src
+</code></pre>
+<h3 id="step-6-export-current-configuration">Step 6: Export Current Configuration</h3>
+<p>To export your current repository configuration:</p>
+<pre><code class="language-bash">vcs export src &gt; current_repos.repos
+</code></pre>
+<h2 id="creating-a-complete-c-ros-package">Creating a Complete C++ ROS Package</h2>
+<p>Let's create a more complete example with a publisher and subscriber:</p>
+<ol>
+<li>Create a subscriber node in <code>src/listener.cpp</code>:</li>
+</ol>
+<pre><code class="language-cpp">#include &quot;ros/ros.h&quot;
+#include &quot;std_msgs/String.h&quot;
+
+// Callback function
+void chatterCallback(const std_msgs::String::ConstPtr&amp; msg)
+{
+  ROS_INFO(&quot;I heard: [%s]&quot;, msg-&gt;data.c_str());
+}
+
+int main(int argc, char **argv)
+{
+  // Initialize ROS node
+  ros::init(argc, argv, &quot;listener&quot;);
+
+  // Create a node handle
+  ros::NodeHandle n;
+
+  // Subscribe to the &quot;chatter&quot; topic
+  ros::Subscriber sub = n.subscribe(&quot;chatter&quot;, 10, chatterCallback);
+
+  // Process callbacks until node shutdown
+  ros::spin();
+
+  return 0;
+}
+</code></pre>
+<ol>
+<li>Update <code>CMakeLists.txt</code> to build the new node:</li>
+</ol>
+<pre><code class="language-cmake">add_executable(listener src/listener.cpp)
+target_link_libraries(listener ${catkin_LIBRARIES})
+</code></pre>
+<ol>
+<li>Create a launch file to run both nodes:</li>
+</ol>
+<pre><code class="language-xml">&lt;launch&gt;
+  &lt;node name=&quot;talker&quot; pkg=&quot;tutorial_02&quot; type=&quot;talker&quot; output=&quot;screen&quot; /&gt;
+  &lt;node name=&quot;listener&quot; pkg=&quot;tutorial_02&quot; type=&quot;listener&quot; output=&quot;screen&quot; /&gt;
+&lt;/launch&gt;
+</code></pre>
+<ol>
+<li>Build and test your package:</li>
+</ol>
+<pre><code class="language-bash">cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+roslaunch tutorial_02 talker_listener.launch
+</code></pre>
+<h2 id="best-practices-for-ros-c-packages">Best Practices for ROS C++ Packages</h2>
+<ol>
+<li>
+<p><strong>Use Header Files</strong>: Organize your code with header files in the <code>include/&lt;package_name&gt;/</code> directory.</p>
+</li>
+<li>
+<p><strong>Follow Include Conventions</strong>: Use angle brackets for system-wide headers and quotes for project headers:
+   ```cpp
+   // For system and library headers (including ROS libraries)
+   #include <ros/ros.h>
+   #include <std_msgs/String.h>
+   #include <vector>
+   #include <string></p>
+</li>
+</ol>
+<p>// For your own package headers
+   #include "my_package/MyNode.h"
+   #include "my_package/utilities.h"
+   ```
+   This convention makes it clear which headers are from external libraries and which are from your own project.</p>
+<ol>
+<li><strong>Create Class-Based Nodes</strong>: Structure your nodes as classes for better organization:</li>
+</ol>
+<pre><code class="language-cpp">// include/tutorial_02/MyNode.h
+#ifndef MY_NODE_H
+#define MY_NODE_H
+
+#include &lt;ros/ros.h&gt;
+#include &lt;std_msgs/String.h&gt;
+
+class MyNode
+{
+public:
+  MyNode();
+  void run();
+
+private:
+  ros::NodeHandle nh_;
+  ros::Publisher pub_;
+  ros::Timer timer_;
+  void timerCallback(const ros::TimerEvent&amp;);
+};
+
+#endif // MY_NODE_H
+</code></pre>
+<pre><code class="language-cpp">// src/MyNode.cpp
+#include &quot;tutorial_02/MyNode.h&quot;
+
+MyNode::MyNode()
+{
+  pub_ = nh_.advertise&lt;std_msgs::String&gt;(&quot;chatter&quot;, 10);
+  timer_ = nh_.createTimer(ros::Duration(1.0), &amp;MyNode::timerCallback, this);
+}
+
+void MyNode::timerCallback(const ros::TimerEvent&amp;)
+{
+  std_msgs::String msg;
+  msg.data = &quot;Hello from class-based node&quot;;
+  pub_.publish(msg);
+  ROS_INFO(&quot;%s&quot;, msg.data.c_str());
+}
+
+void MyNode::run()
+{
+  ros::spin();
+}
+
+int main(int argc, char **argv)
+{
+  ros::init(argc, argv, &quot;my_node&quot;);
+  MyNode node;
+  node.run();
+  return 0;
+}
+</code></pre>
+<ol>
+<li><strong>Use Parameter Server</strong>: Configure your nodes using ROS parameters:</li>
+</ol>
+<pre><code class="language-cpp">std::string topic_name;
+nh_.param&lt;std::string&gt;(&quot;topic_name&quot;, topic_name, &quot;default_topic&quot;);
+</code></pre>
+<ol>
+<li>
+<p><strong>Handle Errors Properly</strong>: Use try-catch blocks for error handling.</p>
+</li>
+<li>
+<p><strong>Use ROS Logging</strong>: Utilize ROS_DEBUG, ROS_INFO, ROS_WARN, ROS_ERROR, and ROS_FATAL.</p>
+</li>
+<li>
+<p><strong>Write Unit Tests</strong>: Use gtest with rostest for testing.</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>This tutorial has guided you through creating a ROS package with C++ (roscpp), managing dependencies, and using vcstool for repository management. By following these steps, you'll be able to create modular, maintainable, and efficient ROS packages for your robotics projects.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

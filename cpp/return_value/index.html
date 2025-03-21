@@ -1,0 +1,649 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://localhost/cpp/return_value/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>C++ Return Values - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c-return-values" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C++ Return Values
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Return Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-value-optimization-rvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Return Value Optimization (RVO)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Return Values
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiple Return Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-stdtuple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using std::tuple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-stdpair" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using std::pair
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-structclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using struct/class
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Return Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-return-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Return Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modifying-values-through-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modifying Values Through References
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-shared-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning Shared Pointers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#class-method-return-types-and-const" class="md-nav__link">
+    <span class="md-ellipsis">
+      Class Method Return Types and const
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="c-return-values">C++ Return Values</h1>
+<h2 id="basic-return-values">Basic Return Values</h2>
+<p>In C++, functions can return values to the caller using the <code>return</code> statement. The return type is declared in the function signature.</p>
+<pre><code class="language-cpp">int add(int a, int b) {
+    return a + b;  // Returns an integer
+}
+</code></pre>
+<h2 id="return-value-optimization-rvo">Return Value Optimization (RVO)</h2>
+<p>Modern C++ compilers implement Return Value Optimization (RVO) which eliminates unnecessary copies when returning objects from functions.</p>
+<pre><code class="language-cpp">std::vector&lt;int&gt; createVector() {
+    std::vector&lt;int&gt; vec = {1, 2, 3, 4, 5};
+    return vec;  // No copying occurs with RVO
+}
+</code></pre>
+<h2 id="multiple-return-values">Multiple Return Values</h2>
+<h3 id="using-stdtuple">Using std::tuple</h3>
+<pre><code class="language-cpp">std::tuple&lt;int, double, std::string&gt; getValues() {
+    return {42, 3.14, &quot;hello&quot;};
+}
+
+// Usage
+auto [num, pi, greeting] = getValues();
+</code></pre>
+<h3 id="using-stdpair">Using std::pair</h3>
+<pre><code class="language-cpp">std::pair&lt;bool, std::string&gt; findElement(const std::vector&lt;std::string&gt;&amp; vec, const std::string&amp; elem) {
+    auto it = std::find(vec.begin(), vec.end(), elem);
+    if (it != vec.end()) {
+        return {true, *it};
+    }
+    return {false, &quot;&quot;};
+}
+</code></pre>
+<h3 id="using-structclass">Using struct/class</h3>
+<pre><code class="language-cpp">struct Result {
+    bool success;
+    int value;
+    std::string error;
+};
+
+Result compute() {
+    // Computation logic
+    return {true, 42, &quot;&quot;};
+}
+</code></pre>
+<h2 id="optional-return-values">Optional Return Values</h2>
+<p>Using <code>std::optional</code> (C++17):</p>
+<pre><code class="language-cpp">std::optional&lt;int&gt; divideIfPossible(int a, int b) {
+    if (b == 0) {
+        return std::nullopt;  // No value
+    }
+    return a / b;
+}
+
+// Usage
+auto result = divideIfPossible(10, 2);
+if (result.has_value()) {
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; *result &lt;&lt; std::endl;
+}
+</code></pre>
+<h2 id="reference-return-values">Reference Return Values</h2>
+<p>Functions can return references, but be careful about lifetime issues:</p>
+<pre><code class="language-cpp">// Safe: returning reference to static data
+const std::string&amp; getStaticString() {
+    static std::string str = &quot;Hello, world!&quot;;
+    return str;
+}
+
+// Dangerous: returning reference to local variable
+std::string&amp; getDangerousReference() {
+    std::string local = &quot;Danger!&quot;;
+    return local;  // NEVER DO THIS - local will be destroyed
+}
+</code></pre>
+<h2 id="modifying-values-through-references">Modifying Values Through References</h2>
+<p>Instead of returning a value, you can modify variables by passing them as references:</p>
+<pre><code class="language-cpp">void modifyValue(int&amp; value) {
+    value = value * 2;  // Modifies the original variable
+}
+
+// Usage
+int x = 5;
+modifyValue(x);  // x is now 10
+</code></pre>
+<h2 id="returning-shared-pointers">Returning Shared Pointers</h2>
+<p>When you need to return dynamically allocated objects with shared ownership:</p>
+<pre><code class="language-cpp">std::shared_ptr&lt;MyClass&gt; createSharedObject() {
+    return std::make_shared&lt;MyClass&gt;(/* constructor args */);
+}
+
+// Usage
+auto obj = createSharedObject();
+// No need to manually delete, memory will be freed when last shared_ptr is destroyed
+</code></pre>
+<h2 id="class-method-return-types-and-const">Class Method Return Types and <code>const</code></h2>
+<p>The <code>const</code> qualifier in method signatures affects how you can use and return values in class contexts:</p>
+<pre><code class="language-cpp">class DataContainer {
+private:
+    std::vector&lt;int&gt; data;
+
+public:
+    // Non-const method - returns modifiable reference
+    std::vector&lt;int&gt;&amp; getData() {
+        return data;  // Caller can modify the internal data
+    }
+
+    // Const method - must return const reference
+    const std::vector&lt;int&gt;&amp; getData() const {
+        return data;  // Caller cannot modify the internal data
+    }
+
+    // Value getter that works in both const and non-const contexts
+    int getSize() const {
+        return data.size();  // Returning by value is always safe
+    }
+
+    // Modification through reference parameter in non-const context
+    void processData(std::vector&lt;int&gt;&amp; result) {
+        // Fill result with processed data
+        result = data;  // Simplified example
+    }
+};
+
+// Usage:
+DataContainer container;
+// Non-const object can use both const and non-const methods
+auto&amp; modifiable = container.getData();  // Uses non-const version
+modifiable[0] = 100;  // OK - modifies container's data
+
+const DataContainer constContainer;
+// Const object can only use const methods
+const auto&amp; readOnly = constContainer.getData();  // Uses const version
+// readOnly[0] = 100;  // Error - cannot modify const reference
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li>Use return value optimization by returning objects directly.</li>
+<li>Prefer returning by value for small objects.</li>
+<li>Consider using <code>std::optional</code> for functions that might not return a value.</li>
+<li>Be careful when returning references to ensure the referenced object outlives the reference.</li>
+<li>For multiple return values, use structured bindings with tuples or custom structs.</li>
+<li>Use reference parameters (like <code>void f(Type&amp; param)</code>) when you need to modify the original variable.</li>
+<li>Consider <code>std::shared_ptr</code> when returning dynamically allocated objects that need shared ownership.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

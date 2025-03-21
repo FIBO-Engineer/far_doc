@@ -1,0 +1,1014 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://localhost/cpp/lambda_function_bind/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>C++ Lambda Functions and Function Binding - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c-lambda-functions-and-function-binding" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C++ Lambda Functions and Function Binding
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lambda-functions-in-c11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda Functions in C++11
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lambda Functions in C++11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Syntax
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capture-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple Lambda
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-with-captures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda with Captures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutable-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutable Lambda
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function-binding-in-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function Binding in C++
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function Binding in C++">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-function-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Function Pointers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-function-objects-functors" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Function Objects (Functors)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-member-function-pointers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Member Function Pointers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-stdbind" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. std::bind
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-stdfunction" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. std::function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-lambda-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Lambda Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-stdmem_fn-c11" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. std::mem_fn (C++11)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-stdinvoke-c17" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. std::invoke (C++17)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combining-lambda-and-bind" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combining Lambda and Bind
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-of-function-binding-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison of Function Binding Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="c-lambda-functions-and-function-binding">C++ Lambda Functions and Function Binding</h1>
+<h2 id="lambda-functions-in-c11">Lambda Functions in C++11</h2>
+<p>Lambda functions (or lambda expressions) allow you to define anonymous function objects directly at the location where they are needed, typically as arguments to algorithms or custom callbacks.</p>
+<h3 id="basic-syntax">Basic Syntax</h3>
+<pre><code class="language-cpp">[capture_list](parameters) -&gt; return_type { function_body }
+</code></pre>
+<ul>
+<li><strong>Capture list</strong>: Specifies which variables from the surrounding scope are accessible within the lambda</li>
+<li><strong>Parameters</strong>: Function parameters (like regular functions)</li>
+<li><strong>Return type</strong>: Optional, compiler can deduce it in most cases</li>
+<li><strong>Function body</strong>: The actual code to execute</li>
+</ul>
+<h3 id="capture-options">Capture Options</h3>
+<ul>
+<li><code>[]</code>: Capture nothing</li>
+<li><code>[=]</code>: Capture all variables by value</li>
+<li><code>[&amp;]</code>: Capture all variables by reference</li>
+<li><code>[x, &amp;y]</code>: Capture x by value, y by reference</li>
+<li><code>[=, &amp;z]</code>: Capture all by value, but z by reference</li>
+<li><code>[this]</code>: Capture the this pointer of the enclosing class</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="simple-lambda">Simple Lambda</h4>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+
+    // Lambda to print each number
+    std::for_each(numbers.begin(), numbers.end(), [](int n) {
+        std::cout &lt;&lt; n &lt;&lt; &quot; &quot;;
+    });
+    // Output: 1 2 3 4 5
+
+    return 0;
+}
+</code></pre>
+<h4 id="lambda-with-captures">Lambda with Captures</h4>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+    int multiplier = 3;
+    int sum = 0;
+
+    // Capture multiplier by value and sum by reference
+    std::for_each(numbers.begin(), numbers.end(), [multiplier, &amp;sum](int n) {
+        sum += n * multiplier;
+    });
+
+    std::cout &lt;&lt; &quot;Sum of all numbers multiplied by &quot; &lt;&lt; multiplier &lt;&lt; &quot;: &quot; &lt;&lt; sum &lt;&lt; std::endl;
+    // Output: Sum of all numbers multiplied by 3: 45
+
+    return 0;
+}
+</code></pre>
+<h4 id="mutable-lambda">Mutable Lambda</h4>
+<p>By default, variables captured by value are const. Use the <code>mutable</code> keyword to modify them:</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+int main() {
+    int counter = 0;
+
+    // Without mutable (would cause compilation error):
+    // auto increment = [counter]() { counter++; return counter; };
+
+    // With mutable:
+    auto increment = [counter]() mutable { counter++; return counter; };
+
+    std::cout &lt;&lt; increment() &lt;&lt; std::endl; // Output: 1
+    std::cout &lt;&lt; increment() &lt;&lt; std::endl; // Output: 2
+    std::cout &lt;&lt; &quot;Original counter: &quot; &lt;&lt; counter &lt;&lt; std::endl; // Output: Original counter: 0
+
+    return 0;
+}
+</code></pre>
+<h2 id="function-binding-in-c">Function Binding in C++</h2>
+<p>Function binding creates function objects that invoke a target function with some arguments bound to specific values. There are several approaches to function binding in C++:</p>
+<h3 id="1-function-pointers">1. Function Pointers</h3>
+<p>The traditional way to refer to functions. They can point to functions but don't store state or bind arguments.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+// Function to be pointed to
+int add(int a, int b) {
+    return a + b;
+}
+
+// Function that accepts a function pointer
+int apply(int (*func)(int, int), int x, int y) {
+    return func(x, y);
+}
+
+int main() {
+    // Create a function pointer
+    int (*funcPtr)(int, int) = add;
+
+    // Use the function pointer directly
+    std::cout &lt;&lt; &quot;Direct call: &quot; &lt;&lt; funcPtr(5, 3) &lt;&lt; std::endl;  // Output: 8
+
+    // Pass the function pointer to another function
+    std::cout &lt;&lt; &quot;Through apply: &quot; &lt;&lt; apply(funcPtr, 5, 3) &lt;&lt; std::endl;  // Output: 8
+
+    return 0;
+}
+</code></pre>
+<p>Function pointers have limitations:
+- Cannot bind arguments (no partial application)
+- Cannot store state
+- Cannot point to member functions directly (require different syntax)</p>
+<h3 id="2-function-objects-functors">2. Function Objects (Functors)</h3>
+<p>Classes that overload the <code>operator()</code> to make instances callable like functions. They can store state.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+// A functor with state
+class Adder {
+private:
+    int base;
+
+public:
+    Adder(int base) : base(base) {}
+
+    // Call operator
+    int operator()(int x) const {
+        return base + x;
+    }
+};
+
+int main() {
+    // Create a functor with base 10
+    Adder add10(10);
+
+    // Use the functor
+    std::cout &lt;&lt; &quot;10 + 5 = &quot; &lt;&lt; add10(5) &lt;&lt; std::endl;  // Output: 15
+
+    return 0;
+}
+</code></pre>
+<h3 id="3-member-function-pointers">3. Member Function Pointers</h3>
+<p>Special pointers that can point to class member functions. They are more complex to use than regular function pointers.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+class Calculator {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int subtract(int a, int b) {
+        return a - b;
+    }
+};
+
+int main() {
+    // Create a member function pointer
+    int (Calculator::*operation)(int, int) = &amp;Calculator::add;
+
+    // Create an instance of the class
+    Calculator calc;
+
+    // Call the member function through the pointer
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; (calc.*operation)(5, 3) &lt;&lt; std::endl;  // Output: 8
+
+    // Change the pointer to point to a different member function
+    operation = &amp;Calculator::subtract;
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; (calc.*operation)(5, 3) &lt;&lt; std::endl;  // Output: 2
+
+    return 0;
+}
+</code></pre>
+<h3 id="4-stdbind">4. std::bind</h3>
+<p>Introduced in C++11, <code>std::bind</code> creates a new callable object that forwards its arguments to another callable after transforming them according to specified rules.</p>
+<pre><code class="language-cpp">#include &lt;functional&gt;
+#include &lt;iostream&gt;
+
+void print(int a, int b, int c) {
+    std::cout &lt;&lt; a &lt;&lt; &quot;, &quot; &lt;&lt; b &lt;&lt; &quot;, &quot; &lt;&lt; c &lt;&lt; std::endl;
+}
+
+int main() {
+    using namespace std::placeholders; // For _1, _2, etc.
+
+    // Bind the first parameter to 10
+    auto bound1 = std::bind(print, 10, _1, _2);
+    bound1(20, 30); // Output: 10, 20, 30
+
+    // Reorder parameters
+    auto bound2 = std::bind(print, _2, _3, _1);
+    bound2(100, 200, 300); // Output: 200, 300, 100
+
+    // Bind all parameters
+    auto bound3 = std::bind(print, 1, 2, 3);
+    bound3(); // Output: 1, 2, 3
+
+    return 0;
+}
+</code></pre>
+<h3 id="5-stdfunction">5. std::function</h3>
+<p>Introduced in C++11, <code>std::function</code> is a general-purpose polymorphic function wrapper that can store, copy, and invoke any callable object.</p>
+<pre><code class="language-cpp">#include &lt;functional&gt;
+#include &lt;iostream&gt;
+
+// Regular function
+int add(int a, int b) {
+    return a + b;
+}
+
+// Function object (functor)
+struct Multiply {
+    int operator()(int a, int b) const {
+        return a * b;
+    }
+};
+
+int main() {
+    // Store regular function
+    std::function&lt;int(int, int)&gt; func1 = add;
+    std::cout &lt;&lt; &quot;func1(2, 3): &quot; &lt;&lt; func1(2, 3) &lt;&lt; std::endl; // Output: 5
+
+    // Store function object
+    std::function&lt;int(int, int)&gt; func2 = Multiply();
+    std::cout &lt;&lt; &quot;func2(2, 3): &quot; &lt;&lt; func2(2, 3) &lt;&lt; std::endl; // Output: 6
+
+    // Store lambda
+    std::function&lt;int(int, int)&gt; func3 = [](int a, int b) { return a - b; };
+    std::cout &lt;&lt; &quot;func3(5, 3): &quot; &lt;&lt; func3(5, 3) &lt;&lt; std::endl; // Output: 2
+
+    // Store the result of a bind expression
+    using namespace std::placeholders;
+    std::function&lt;int(int)&gt; func4 = std::bind(add, _1, 5);
+    std::cout &lt;&lt; &quot;func4(10): &quot; &lt;&lt; func4(10) &lt;&lt; std::endl; // Output: 15
+
+    return 0;
+}
+</code></pre>
+<h3 id="6-lambda-functions">6. Lambda Functions</h3>
+<p>Lambda functions provide a concise way to create function objects. They can capture context and are particularly useful for short, one-off functions.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    int base = 10;
+
+    // Lambda that captures base by value
+    auto add = [base](int x) { return base + x; };
+
+    std::cout &lt;&lt; &quot;10 + 5 = &quot; &lt;&lt; add(5) &lt;&lt; std::endl;  // Output: 15
+
+    // Lambda without captures
+    auto multiply = [](int x, int y) { return x * y; };
+
+    std::cout &lt;&lt; &quot;3 * 4 = &quot; &lt;&lt; multiply(3, 4) &lt;&lt; std::endl;  // Output: 12
+
+    return 0;
+}
+</code></pre>
+<h3 id="7-stdmem_fn-c11">7. std::mem_fn (C++11)</h3>
+<p>Adapts a member function to be used with standard algorithms and function objects.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;functional&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+class Person {
+private:
+    std::string name;
+    int age;
+
+public:
+    Person(const std::string&amp; name, int age) : name(name), age(age) {}
+
+    int getAge() const { return age; }
+    std::string getName() const { return name; }
+};
+
+int main() {
+    std::vector&lt;Person&gt; people = {
+        Person(&quot;Alice&quot;, 25),
+        Person(&quot;Bob&quot;, 30),
+        Person(&quot;Charlie&quot;, 20)
+    };
+
+    // Use mem_fn to create a callable that invokes getAge() on each object
+    std::vector&lt;int&gt; ages;
+    std::transform(people.begin(), people.end(), 
+                  std::back_inserter(ages),
+                  std::mem_fn(&amp;Person::getAge));
+
+    for (int age : ages) {
+        std::cout &lt;&lt; &quot;Age: &quot; &lt;&lt; age &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="8-stdinvoke-c17">8. std::invoke (C++17)</h3>
+<p>A unified way to call functions, member functions, and callable objects.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;functional&gt;
+
+struct Foo {
+    void display() const {
+        std::cout &lt;&lt; &quot;Foo::display()&quot; &lt;&lt; std::endl;
+    }
+
+    int add(int a, int b) const {
+        return a + b;
+    }
+};
+
+void globalFunc(int x) {
+    std::cout &lt;&lt; &quot;Global function: &quot; &lt;&lt; x &lt;&lt; std::endl;
+}
+
+int main() {
+    // Invoke a free function
+    std::invoke(globalFunc, 42);  // Output: Global function: 42
+
+    Foo foo;
+
+    // Invoke a member function
+    std::invoke(&amp;Foo::display, foo);  // Output: Foo::display()
+
+    // Invoke a member function with arguments
+    int result = std::invoke(&amp;Foo::add, foo, 10, 20);
+    std::cout &lt;&lt; &quot;Result: &quot; &lt;&lt; result &lt;&lt; std::endl;  // Output: Result: 30
+
+    // Invoke a lambda
+    auto lambda = [](int x) { return x * x; };
+    std::cout &lt;&lt; &quot;Lambda result: &quot; &lt;&lt; std::invoke(lambda, 5) &lt;&lt; std::endl;  // Output: Lambda result: 25
+
+    return 0;
+}
+</code></pre>
+<h3 id="combining-lambda-and-bind">Combining Lambda and Bind</h3>
+<pre><code class="language-cpp">#include &lt;functional&gt;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+    int threshold = 3;
+
+    // Using lambda
+    auto countWithLambda = std::count_if(numbers.begin(), numbers.end(), 
+        [threshold](int n) { return n &gt; threshold; });
+
+    // Using bind with a lambda
+    auto isGreaterThan = [](int n, int t) { return n &gt; t; };
+    auto countWithBind = std::count_if(numbers.begin(), numbers.end(),
+        std::bind(isGreaterThan, std::placeholders::_1, threshold));
+
+    std::cout &lt;&lt; &quot;Count with lambda: &quot; &lt;&lt; countWithLambda &lt;&lt; std::endl; // Output: 2
+    std::cout &lt;&lt; &quot;Count with bind: &quot; &lt;&lt; countWithBind &lt;&lt; std::endl;     // Output: 2
+
+    return 0;
+}
+</code></pre>
+<h3 id="comparison-of-function-binding-methods">Comparison of Function Binding Methods</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Introduced</th>
+<th>Advantages</th>
+<th>Limitations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function Pointers</td>
+<td>C</td>
+<td>Simple, low overhead</td>
+<td>No state, no partial application</td>
+</tr>
+<tr>
+<td>Functors</td>
+<td>C++</td>
+<td>Can store state, customizable</td>
+<td>Requires defining a class</td>
+</tr>
+<tr>
+<td>Member Function Pointers</td>
+<td>C++</td>
+<td>Can call class methods</td>
+<td>Complex syntax, need class instance</td>
+</tr>
+<tr>
+<td>std::bind</td>
+<td>C++11</td>
+<td>Argument binding, reordering</td>
+<td>More verbose than lambdas</td>
+</tr>
+<tr>
+<td>std::function</td>
+<td>C++11</td>
+<td>Type erasure, generic wrapper</td>
+<td>Some overhead compared to direct calls</td>
+</tr>
+<tr>
+<td>Lambda Functions</td>
+<td>C++11</td>
+<td>Concise, captures context</td>
+<td>Limited to their defined scope</td>
+</tr>
+<tr>
+<td>std::mem_fn</td>
+<td>C++11</td>
+<td>Simplifies using member functions</td>
+<td>Only for member functions</td>
+</tr>
+<tr>
+<td>std::invoke</td>
+<td>C++17</td>
+<td>Unified calling syntax</td>
+<td>Newer standard, may not be available</td>
+</tr>
+</tbody>
+</table>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li><strong>Modern C++ approach</strong>: Prefer lambdas for simple, local functions and std::function for more complex scenarios</li>
+<li><strong>Performance</strong>: For performance-critical code, function pointers or functors might have less overhead</li>
+<li><strong>Readability</strong>: Choose the method that makes your code most readable for the specific use case</li>
+<li><strong>Flexibility</strong>: std::function provides the most flexibility but with some performance cost</li>
+<li><strong>C++17 and beyond</strong>: Consider using std::invoke for a unified approach</li>
+</ul>
+<p>Both lambda expressions and function binding are powerful tools in modern C++ that make functional programming techniques more accessible and code more expressive.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

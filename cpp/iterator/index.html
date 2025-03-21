@@ -1,0 +1,1313 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://localhost/cpp/iterator/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>C++ Iterators - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c-iterators" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C++ Iterators
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-iterator-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Iterator Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterator-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterator Hierarchy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Iterator Hierarchy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-input-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Input Iterators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-output-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Output Iterators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-forward-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Forward Iterators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-bidirectional-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Bidirectional Iterators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-random-access-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Random Access Iterators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-iterator-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Iterator Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-specific-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container-Specific Iterators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Const Iterators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverse-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reverse Iterators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterator-invalidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterator Invalidation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modern-c-range-based-for-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modern C++ Range-Based For Loops
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterator-algorithms-with-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterator Algorithms with &lt;algorithm&gt;
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterator-adaptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterator Adaptors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-iterators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Iterators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iterator-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterator Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="c-iterators">C++ Iterators</h1>
+<p>Iterators are a core concept in C++ that provide a uniform way to traverse through various container types (like arrays, vectors, lists, maps, etc.) without needing to know the underlying implementation details.</p>
+<h2 id="basic-iterator-concepts">Basic Iterator Concepts</h2>
+<p>Iterators act as a bridge between algorithms and containers:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+
+    // Iterator declaration
+    std::vector&lt;int&gt;::iterator it;
+
+    // Traversing using iterators
+    for (it = numbers.begin(); it != numbers.end(); ++it) {
+        std::cout &lt;&lt; *it &lt;&lt; &quot; &quot;;  // Dereferencing to access the value
+    }
+    // Output: 1 2 3 4 5
+
+    // Alternative with auto (C++11)
+    for (auto it = numbers.begin(); it != numbers.end(); ++it) {
+        std::cout &lt;&lt; *it &lt;&lt; &quot; &quot;;  
+    }
+}
+</code></pre>
+<h2 id="iterator-hierarchy">Iterator Hierarchy</h2>
+<p>C++ provides several categories of iterators with increasing capabilities:</p>
+<h3 id="1-input-iterators">1. Input Iterators</h3>
+<p>Input iterators can read elements from a sequence, moving only forward one step at a time and supporting only a single pass through the data.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;iterator&gt;
+
+int main() {
+    // std::istream_iterator is an input iterator
+    std::istringstream input(&quot;1 2 3 4 5&quot;);
+    std::istream_iterator&lt;int&gt; it(input);  // Points to first int
+    std::istream_iterator&lt;int&gt; end;        // End-of-stream iterator
+
+    // Read from input stream one element at a time
+    while (it != end) {
+        std::cout &lt;&lt; &quot;Read: &quot; &lt;&lt; *it &lt;&lt; std::endl;
+        ++it;  // Move to next element (can't go back)
+    }
+
+    // Can't reset or reuse the iterator - single pass only
+}
+</code></pre>
+<h3 id="2-output-iterators">2. Output Iterators</h3>
+<p>Output iterators can write elements to a destination sequence, moving only forward and supporting only a single pass.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;iterator&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    std::vector&lt;int&gt; data = {1, 2, 3, 4, 5};
+
+    // std::ostream_iterator is an output iterator
+    std::ostream_iterator&lt;int&gt; output_it(std::cout, &quot; &quot;);
+
+    // Copy elements to output stream
+    std::copy(data.begin(), data.end(), output_it);
+    // Output: 1 2 3 4 5
+
+    // Using with algorithms
+    std::vector&lt;int&gt; squares;
+    std::back_insert_iterator&lt;std::vector&lt;int&gt;&gt; back_it(squares);
+    // Or simply: auto back_it = std::back_inserter(squares);
+
+    // Transform and insert at back
+    std::transform(data.begin(), data.end(), back_it,
+                  [](int x) { return x * x; });
+
+    // View results
+    for (int num : squares) {
+        std::cout &lt;&lt; num &lt;&lt; &quot; &quot;;
+    }
+    // Output: 1 4 9 16 25
+}
+</code></pre>
+<h3 id="3-forward-iterators">3. Forward Iterators</h3>
+<p>Forward iterators can both read and write elements, moving only forward but supporting multiple passes.</p>
+<pre><code class="language-cpp">#include &lt;forward_list&gt;  // Singly-linked list
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    // std::forward_list provides forward iterators
+    std::forward_list&lt;int&gt; flist = {1, 2, 3, 4, 5};
+
+    // Forward traversal
+    std::forward_list&lt;int&gt;::iterator it = flist.begin();
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;  // 1
+    ++it;
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;  // 2
+
+    // Can't go backwards: --it; // Error!
+
+    // But can make multiple passes
+    for (auto it1 = flist.begin(); it1 != flist.end(); ++it1) {
+        std::cout &lt;&lt; &quot;First pass: &quot; &lt;&lt; *it1 &lt;&lt; std::endl;
+    }
+
+    for (auto it2 = flist.begin(); it2 != flist.end(); ++it2) {
+        std::cout &lt;&lt; &quot;Second pass: &quot; &lt;&lt; *it2 &lt;&lt; std::endl;
+    }
+
+    // Can modify values in-place
+    for (auto it = flist.begin(); it != flist.end(); ++it) {
+        *it = *it * 2;
+    }
+
+    // View modified list
+    for (int val : flist) {
+        std::cout &lt;&lt; val &lt;&lt; &quot; &quot;;  // 2 4 6 8 10
+    }
+}
+</code></pre>
+<h3 id="4-bidirectional-iterators">4. Bidirectional Iterators</h3>
+<p>Bidirectional iterators can move both forward and backward, reading and writing elements with multiple passes.</p>
+<pre><code class="language-cpp">#include &lt;list&gt;  // Doubly-linked list
+#include &lt;iostream&gt;
+
+int main() {
+    // std::list provides bidirectional iterators
+    std::list&lt;int&gt; dlist = {10, 20, 30, 40, 50};
+
+    // Bidirectional traversal
+    std::list&lt;int&gt;::iterator it = dlist.begin();
+    ++it;  // Forward to 20
+    ++it;  // Forward to 30
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;  // 30
+
+    --it;  // Backward to 20
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;  // 20
+
+    // Traverse backward through entire list
+    auto rit = dlist.end();
+    while (rit != dlist.begin()) {
+        --rit;  // Have to predecrement since end() is past-the-end
+        std::cout &lt;&lt; *rit &lt;&lt; &quot; &quot;;
+    }
+    // Output: 50 40 30 20 10
+}
+</code></pre>
+<h3 id="5-random-access-iterators">5. Random Access Iterators</h3>
+<p>Random access iterators provide all iterator operations plus direct access to any element with constant time complexity.</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+int main() {
+    // std::vector provides random access iterators
+    std::vector&lt;int&gt; vec = {10, 20, 30, 40, 50};
+
+    // Random access operations
+    std::vector&lt;int&gt;::iterator it = vec.begin();
+
+    // Direct offset access
+    std::cout &lt;&lt; it[2] &lt;&lt; std::endl;     // 30 (like array access)
+    std::cout &lt;&lt; *(it + 3) &lt;&lt; std::endl; // 40 (pointer arithmetic)
+
+    // Jump directly to an element
+    it += 4;  // Jump to the 5th element
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;  // 50
+
+    // Jump backward
+    it -= 2;  // Go back to the 3rd element
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;  // 30
+
+    // Iterator arithmetic
+    auto it2 = vec.begin();
+    std::cout &lt;&lt; &quot;Distance: &quot; &lt;&lt; it - it2 &lt;&lt; std::endl;  // 2
+
+    // Comparison operators
+    std::cout &lt;&lt; &quot;it &gt; it2: &quot; &lt;&lt; (it &gt; it2) &lt;&lt; std::endl;  // 1 (true)
+    std::cout &lt;&lt; &quot;it &lt; vec.end(): &quot; &lt;&lt; (it &lt; vec.end()) &lt;&lt; std::endl;  // 1 (true)
+}
+</code></pre>
+<h2 id="common-iterator-operations">Common Iterator Operations</h2>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+#include &lt;iterator&gt;  // For std::distance
+
+int main() {
+    std::vector&lt;int&gt; numbers = {10, 20, 30, 40, 50};
+    auto it = numbers.begin();  // Modern style using auto
+
+    // Basic operations
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;    // Dereferencing: 10
+    ++it;                             // Move to next element (prefer over it++)
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;    // 20
+
+    it += 2;                          // Jump forward by 2 (random access)
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;    // 40
+
+    --it;                             // Move backward
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;    // 30
+
+    // Iterator arithmetic (for random access iterators)
+    auto it2 = numbers.begin();
+    std::cout &lt;&lt; &quot;Distance: &quot; &lt;&lt; it - it2 &lt;&lt; std::endl;  // 2
+
+    // For non-random access iterators, use std::distance
+    std::cout &lt;&lt; &quot;Distance: &quot; &lt;&lt; std::distance(it2, it) &lt;&lt; std::endl;  // 2
+
+    // Comparing iterators
+    if (it != numbers.end()) {
+        std::cout &lt;&lt; &quot;Not at the end yet\n&quot;;
+    }
+
+    // Advancing iterators (works for all iterator types)
+    std::advance(it, 1);  // Move forward 1 step to 40
+    std::cout &lt;&lt; *it &lt;&lt; std::endl;
+
+    // Getting next/prev iterators (C++11)
+    auto next_it = std::next(it);      // Iterator to the next element
+    auto prev_it = std::prev(it);      // Iterator to the previous element
+
+    std::cout &lt;&lt; *next_it &lt;&lt; std::endl;  // 50
+    std::cout &lt;&lt; *prev_it &lt;&lt; std::endl;  // 30
+}
+</code></pre>
+<h2 id="container-specific-iterators">Container-Specific Iterators</h2>
+<p>Different containers provide specific types of iterators:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;unordered_map&gt;
+#include &lt;iostream&gt;
+
+int main() {
+    // Vector - random access
+    std::vector&lt;int&gt; vec = {1, 2, 3};
+    std::vector&lt;int&gt;::iterator vec_it = vec.begin();
+    vec_it += 2;  // Random access - jumps directly to element 3
+    std::cout &lt;&lt; &quot;Vector element: &quot; &lt;&lt; *vec_it &lt;&lt; std::endl;
+
+    // List - bidirectional only
+    std::list&lt;int&gt; lst = {1, 2, 3};
+    std::list&lt;int&gt;::iterator lst_it = lst.begin();
+    ++lst_it;     // Forward one step
+    --lst_it;     // Backward one step
+    std::cout &lt;&lt; &quot;List element: &quot; &lt;&lt; *lst_it &lt;&lt; std::endl;
+    // lst_it += 2;  // Error! List iterators don't support random access
+
+    // Set - bidirectional, elements are const
+    std::set&lt;int&gt; s = {3, 1, 4};  // Sorted automatically: 1, 3, 4
+    auto set_it = s.begin();
+    std::cout &lt;&lt; &quot;First set element: &quot; &lt;&lt; *set_it &lt;&lt; std::endl;  // 1
+    // *set_it = 5;  // Error! Can't modify set elements through iterator
+
+    // Map - bidirectional
+    std::map&lt;std::string, int&gt; ages = {{&quot;Alice&quot;, 25}, {&quot;Bob&quot;, 30}, {&quot;Charlie&quot;, 35}};
+    std::map&lt;std::string, int&gt;::iterator map_it = ages.begin();
+    // Maps iterate through key-value pairs as std::pair objects
+    std::cout &lt;&lt; map_it-&gt;first &lt;&lt; &quot;: &quot; &lt;&lt; map_it-&gt;second &lt;&lt; std::endl;
+    // Output: Alice: 25 (maps are sorted by key)
+
+    // Increment to next entry
+    ++map_it;
+    std::cout &lt;&lt; map_it-&gt;first &lt;&lt; &quot;: &quot; &lt;&lt; map_it-&gt;second &lt;&lt; std::endl;
+    // Output: Bob: 30
+
+    // Modifying map values (but not keys)
+    map_it-&gt;second = 31;  // Change Bob's age
+
+    // Unordered containers - forward iterators
+    std::unordered_map&lt;std::string, int&gt; hash_map = {{&quot;X&quot;, 1}, {&quot;Y&quot;, 2}};
+    // Order not guaranteed
+    for (auto it = hash_map.begin(); it != hash_map.end(); ++it) {
+        std::cout &lt;&lt; it-&gt;first &lt;&lt; &quot;: &quot; &lt;&lt; it-&gt;second &lt;&lt; std::endl;
+    }
+}
+</code></pre>
+<h2 id="const-iterators">Const Iterators</h2>
+<p>When you only need read access, use <code>const_iterator</code> for safety:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+
+    // Three ways to get const iterators:
+
+    // 1. From non-const container using cbegin()/cend() (C++11)
+    auto it1 = numbers.cbegin();
+
+    // 2. Explicitly declare const_iterator type
+    std::vector&lt;int&gt;::const_iterator it2 = numbers.begin();
+
+    // 3. From const container (all iterators are const)
+    const std::vector&lt;int&gt;&amp; const_numbers = numbers;
+    auto it3 = const_numbers.begin();  // const_iterator automatically
+
+    // Read but can't modify
+    std::cout &lt;&lt; *it1 &lt;&lt; std::endl;  // OK
+    // *it1 = 10;  // Error! Cannot modify through const_iterator
+
+    // Traversing with const_iterator
+    for (auto it = numbers.cbegin(); it != numbers.cend(); ++it) {
+        std::cout &lt;&lt; *it &lt;&lt; &quot; &quot;;
+        // *it += 1;  // Error! Cannot modify through const_iterator
+    }
+
+    // Modern C++11 range-based for loop with const reference
+    // (implicitly uses const iterators)
+    for (const int&amp; num : numbers) {
+        std::cout &lt;&lt; num &lt;&lt; &quot; &quot;;
+        // num = 10;  // Error! Can't modify through const reference
+    }
+}
+</code></pre>
+<h2 id="reverse-iterators">Reverse Iterators</h2>
+<p>To traverse containers in reverse order:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+
+    // Using reverse iterators
+    std::cout &lt;&lt; &quot;Reverse traversal: &quot;;
+    for (auto rit = numbers.rbegin(); rit != numbers.rend(); ++rit) {
+        std::cout &lt;&lt; *rit &lt;&lt; &quot; &quot;;
+    }
+    std::cout &lt;&lt; std::endl;
+    // Output: 5 4 3 2 1
+
+    // Explicitly typed reverse iterator
+    std::vector&lt;int&gt;::reverse_iterator rev_it = numbers.rbegin();
+    std::cout &lt;&lt; &quot;First element from end: &quot; &lt;&lt; *rev_it &lt;&lt; std::endl;  // 5
+
+    // Const reverse iterator
+    std::vector&lt;int&gt;::const_reverse_iterator const_rev_it = numbers.crbegin();
+    std::cout &lt;&lt; &quot;Using const reverse iterator: &quot; &lt;&lt; *const_rev_it &lt;&lt; std::endl;
+
+    // Converting reverse iterator to forward iterator with base()
+    auto normal_it = (++numbers.rbegin()).base();
+    std::cout &lt;&lt; &quot;Element via base(): &quot; &lt;&lt; *normal_it &lt;&lt; std::endl;  // 4
+
+    // Using reverse iterators with algorithms
+    std::vector&lt;int&gt; reversed(numbers.size());
+    std::copy(numbers.rbegin(), numbers.rend(), reversed.begin());
+
+    std::cout &lt;&lt; &quot;Reversed vector: &quot;;
+    for (int num : reversed) {
+        std::cout &lt;&lt; num &lt;&lt; &quot; &quot;;  // 5 4 3 2 1
+    }
+    std::cout &lt;&lt; std::endl;
+}
+</code></pre>
+<h2 id="iterator-invalidation">Iterator Invalidation</h2>
+<p>Be careful about iterator invalidation when modifying containers:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;iostream&gt;
+
+int main() {
+    // Vector iterator invalidation examples
+    std::vector&lt;int&gt; vec = {1, 2, 3, 4, 5};
+    auto it = vec.begin() + 2;  // Points to 3
+    std::cout &lt;&lt; &quot;Before modification: &quot; &lt;&lt; *it &lt;&lt; std::endl;  // 3
+
+    // Adding elements (may cause reallocation)
+    vec.push_back(6);  // May invalidate ALL iterators if reallocation occurs
+
+    // DANGER: 'it' may now be invalid!
+    // std::cout &lt;&lt; *it &lt;&lt; std::endl;  // Undefined behavior!
+
+    // Safe: reacquire iterator after modification
+    it = vec.begin() + 2;
+    std::cout &lt;&lt; &quot;After reacquiring: &quot; &lt;&lt; *it &lt;&lt; std::endl;  // 3
+
+    // Erasing elements invalidates iterators to erased elements and beyond
+    auto erase_it = vec.begin() + 1;  // Points to 2
+    vec.erase(erase_it);  // Removes 2, invalidates erase_it and all following iterators
+
+    // Safe: iterator returned by erase
+    erase_it = vec.erase(vec.begin());  // Removes 1, returns iterator to next element
+    std::cout &lt;&lt; &quot;After erase: &quot; &lt;&lt; *erase_it &lt;&lt; std::endl;  // 3
+
+    // List has more stable iterators
+    std::list&lt;int&gt; lst = {10, 20, 30, 40, 50};
+    auto lst_it = lst.begin();
+    ++lst_it;  // Points to 20
+    ++lst_it;  // Points to 30
+    std::cout &lt;&lt; &quot;List iterator: &quot; &lt;&lt; *lst_it &lt;&lt; std::endl;  // 30
+
+    // List insertion doesn't invalidate existing iterators
+    lst.push_back(60);
+    lst.push_front(5);
+    std::cout &lt;&lt; &quot;Still valid: &quot; &lt;&lt; *lst_it &lt;&lt; std::endl;  // Still 30
+
+    // List erasure only invalidates iterators to erased elements
+    auto another_it = lst.begin();
+    ++another_it;  // Points to 10
+    lst.erase(another_it);  // Only invalidates the iterator to 10
+    std::cout &lt;&lt; &quot;Still valid after erase: &quot; &lt;&lt; *lst_it &lt;&lt; std::endl;  // Still 30
+}
+</code></pre>
+<h2 id="modern-c-range-based-for-loops">Modern C++ Range-Based For Loops</h2>
+<p>C++11 introduced range-based for loops as a simpler way to iterate:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+
+    // Simple element access (copies elements)
+    std::cout &lt;&lt; &quot;By value: &quot;;
+    for (int number : numbers) {
+        std::cout &lt;&lt; number &lt;&lt; &quot; &quot;;
+        // Modifying number doesn't affect the container
+        number *= 2;
+    }
+    std::cout &lt;&lt; std::endl;
+
+    // Modifying elements using reference
+    std::cout &lt;&lt; &quot;By reference: &quot;;
+    for (int&amp; number : numbers) {
+        number *= 2;  // Modifies the actual container elements
+        std::cout &lt;&lt; number &lt;&lt; &quot; &quot;;  // 2 4 6 8 10
+    }
+    std::cout &lt;&lt; std::endl;
+
+    // Read-only access with const reference (most efficient)
+    std::cout &lt;&lt; &quot;By const reference: &quot;;
+    for (const int&amp; number : numbers) {
+        std::cout &lt;&lt; number &lt;&lt; &quot; &quot;;  // 2 4 6 8 10
+        // number = 1;  // Error! Can't modify a const reference
+    }
+    std::cout &lt;&lt; std::endl;
+
+    // Works with all container types
+    std::map&lt;std::string, int&gt; ages = {{&quot;Alice&quot;, 25}, {&quot;Bob&quot;, 30}, {&quot;Charlie&quot;, 35}};
+
+    for (const auto&amp; pair : ages) {
+        std::cout &lt;&lt; pair.first &lt;&lt; &quot; is &quot; &lt;&lt; pair.second &lt;&lt; &quot; years old.&quot; &lt;&lt; std::endl;
+    }
+
+    // C++17 structured binding for map iteration
+    for (const auto&amp; [name, age] : ages) {
+        std::cout &lt;&lt; name &lt;&lt; &quot; is &quot; &lt;&lt; age &lt;&lt; &quot; years old.&quot; &lt;&lt; std::endl;
+    }
+}
+</code></pre>
+<h2 id="iterator-algorithms-with-algorithm">Iterator Algorithms with <code>&lt;algorithm&gt;</code></h2>
+<p>The standard library provides powerful algorithms using iterators:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+#include &lt;iostream&gt;
+#include &lt;iterator&gt;
+
+int main() {
+    std::vector&lt;int&gt; numbers = {5, 2, 8, 1, 9};
+
+    // Sorting
+    std::sort(numbers.begin(), numbers.end());
+    std::cout &lt;&lt; &quot;Sorted: &quot;;
+    for (int n : numbers) std::cout &lt;&lt; n &lt;&lt; &quot; &quot;;  // 1 2 5 8 9
+    std::cout &lt;&lt; std::endl;
+
+    // Finding elements
+    auto it = std::find(numbers.begin(), numbers.end(), 5);
+    if (it != numbers.end()) {
+        std::cout &lt;&lt; &quot;Found 5 at position: &quot; 
+                  &lt;&lt; std::distance(numbers.begin(), it) &lt;&lt; std::endl;  // 2
+    }
+
+    // Counting elements matching a condition
+    int count = std::count_if(numbers.begin(), numbers.end(), 
+                             [](int x) { return x % 2 == 0; });
+    std::cout &lt;&lt; &quot;Even numbers: &quot; &lt;&lt; count &lt;&lt; std::endl;  // 1 (only 2 is even)
+
+    // Transforming elements
+    std::vector&lt;int&gt; squares(numbers.size());
+    std::transform(numbers.begin(), numbers.end(), squares.begin(),
+                  [](int x) { return x * x; });
+
+    std::cout &lt;&lt; &quot;Squares: &quot;;
+    for (int n : squares) std::cout &lt;&lt; n &lt;&lt; &quot; &quot;;  // 1 4 25 64 81
+    std::cout &lt;&lt; std::endl;
+
+    // Accumulating values
+    int sum = std::accumulate(numbers.begin(), numbers.end(), 0);
+    std::cout &lt;&lt; &quot;Sum: &quot; &lt;&lt; sum &lt;&lt; std::endl;  // 25
+
+    // Filtering with back_inserter
+    std::vector&lt;int&gt; even_nums;
+    std::copy_if(numbers.begin(), numbers.end(), 
+                std::back_inserter(even_nums),
+                [](int x) { return x % 2 == 0; });
+
+    std::cout &lt;&lt; &quot;Even: &quot;;
+    for (int n : even_nums) std::cout &lt;&lt; n &lt;&lt; &quot; &quot;;  // 2 8
+    std::cout &lt;&lt; std::endl;
+
+    // Using inserter with sets
+    std::set&lt;int&gt; num_set;
+    std::copy(numbers.begin(), numbers.end(), 
+             std::inserter(num_set, num_set.end()));
+
+    // Using direct output
+    std::cout &lt;&lt; &quot;To output: &quot;;
+    std::copy(numbers.begin(), numbers.end(), 
+             std::ostream_iterator&lt;int&gt;(std::cout, &quot; &quot;));
+    std::cout &lt;&lt; std::endl;
+}
+</code></pre>
+<h2 id="iterator-adaptors">Iterator Adaptors</h2>
+<p>C++ provides several iterator adaptors to enhance functionality:</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+#include &lt;list&gt;
+#include &lt;iterator&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    std::vector&lt;int&gt; vec;
+
+    // back_inserter - adds elements to the end of a container
+    std::generate_n(std::back_inserter(vec), 5, 
+                   [n = 0]() mutable { return ++n; });
+
+    std::cout &lt;&lt; &quot;After back_inserter: &quot;;
+    for (int n : vec) std::cout &lt;&lt; n &lt;&lt; &quot; &quot;;  // 1 2 3 4 5
+    std::cout &lt;&lt; std::endl;
+
+    // front_inserter - adds elements to the beginning (not for vector)
+    std::list&lt;int&gt; lst;
+    std::generate_n(std::front_inserter(lst), 3, 
+                   [n = 10]() mutable { return n--; });
+
+    std::cout &lt;&lt; &quot;After front_inserter: &quot;;
+    for (int n : lst) std::cout &lt;&lt; n &lt;&lt; &quot; &quot;;  // 8 9 10
+    std::cout &lt;&lt; std::endl;
+
+    // inserter - inserts at a specific position
+    std::vector&lt;int&gt; dest = {1, 5};
+    std::vector&lt;int&gt; source = {2, 3, 4};
+
+    // Insert source elements into dest at position 1
+    std::copy(source.begin(), source.end(), 
+             std::inserter(dest, dest.begin() + 1));
+
+    std::cout &lt;&lt; &quot;After inserter: &quot;;
+    for (int n : dest) std::cout &lt;&lt; n &lt;&lt; &quot; &quot;;  // 1 2 3 4 5
+    std::cout &lt;&lt; std::endl;
+
+    // move_iterator - moves elements instead of copying
+    std::vector&lt;std::string&gt; src = {&quot;Hello&quot;, &quot;World&quot;};
+    std::vector&lt;std::string&gt; dst;
+
+    // Move strings instead of copying them
+    std::copy(std::make_move_iterator(src.begin()),
+             std::make_move_iterator(src.end()),
+             std::back_inserter(dst));
+
+    std::cout &lt;&lt; &quot;dst[0]: &quot; &lt;&lt; dst[0] &lt;&lt; std::endl;  // Hello
+    std::cout &lt;&lt; &quot;src[0] empty? &quot; &lt;&lt; src[0].empty() &lt;&lt; std::endl;  // Likely 1 (true)
+}
+</code></pre>
+<h2 id="custom-iterators">Custom Iterators</h2>
+<p>You can create your own iterators for custom containers:</p>
+<pre><code class="language-cpp">#include &lt;iterator&gt;
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+
+// Simple custom container
+class IntContainer {
+private:
+    int data[10];
+
+public:
+    IntContainer() {
+        for (int i = 0; i &lt; 10; i++) data[i] = i;
+    }
+
+    // Custom iterator class
+    class Iterator {
+    private:
+        int* ptr;
+
+    public:
+        // Iterator traits (required for algorithm compatibility)
+        using iterator_category = std::random_access_iterator_tag;
+        using value_type = int;
+        using difference_type = std::ptrdiff_t;
+        using pointer = int*;
+        using reference = int&amp;;
+
+        // Constructors
+        Iterator(int* p) : ptr(p) {}
+
+        // Basic operators
+        reference operator*() const { return *ptr; }
+        pointer operator-&gt;() const { return ptr; }
+
+        // Increment/decrement
+        Iterator&amp; operator++() { ++ptr; return *this; }  // Pre-increment
+        Iterator operator++(int) { Iterator tmp = *this; ++ptr; return tmp; }  // Post-increment
+
+        Iterator&amp; operator--() { --ptr; return *this; }  // Pre-decrement
+        Iterator operator--(int) { Iterator tmp = *this; --ptr; return tmp; }  // Post-decrement
+
+        // Random access operators
+        Iterator&amp; operator+=(difference_type n) { ptr += n; return *this; }
+        Iterator operator+(difference_type n) const { return Iterator(ptr + n); }
+
+        Iterator&amp; operator-=(difference_type n) { ptr -= n; return *this; }
+        Iterator operator-(difference_type n) const { return Iterator(ptr - n); }
+
+        difference_type operator-(const Iterator&amp; other) const {
+            return ptr - other.ptr;
+        }
+
+        reference operator[](difference_type n) const { return ptr[n]; }
+
+        // Comparison operators
+        friend bool operator==(const Iterator&amp; a, const Iterator&amp; b) {
+            return a.ptr == b.ptr;
+        }
+        friend bool operator!=(const Iterator&amp; a, const Iterator&amp; b) {
+            return a.ptr != b.ptr;
+        }
+
+        friend bool operator&lt;(const Iterator&amp; a, const Iterator&amp; b) {
+            return a.ptr &lt; b.ptr;
+        }
+        friend bool operator&gt;(const Iterator&amp; a, const Iterator&amp; b) {
+            return a.ptr &gt; b.ptr;
+        }
+        friend bool operator&lt;=(const Iterator&amp; a, const Iterator&amp; b) {
+            return a.ptr &lt;= b.ptr;
+        }
+        friend bool operator&gt;=(const Iterator&amp; a, const Iterator&amp; b) {
+            return a.ptr &gt;= b.ptr;
+        }
+
+        friend Iterator operator+(difference_type n, const Iterator&amp; it) {
+            return Iterator(it.ptr + n);
+        }
+    };
+
+    // Iterator factory methods
+    Iterator begin() { return Iterator(&amp;data[0]); }
+    Iterator end() { return Iterator(&amp;data[10]); }
+
+    // Const iterator version
+    class ConstIterator {
+    private:
+        const int* ptr;
+
+    public:
+        // Same traits but with const pointer/reference
+        using iterator_category = std::random_access_iterator_tag;
+        using value_type = int;
+        using difference_type = std::ptrdiff_t;
+        using pointer = const int*;
+        using reference = const int&amp;;
+
+        ConstIterator(const int* p) : ptr(p) {}
+
+        // Read-only access
+        reference operator*() const { return *ptr; }
+        pointer operator-&gt;() const { return ptr; }
+
+        // Other operators (similar to non-const version)
+        ConstIterator&amp; operator++() { ++ptr; return *this; }
+        // ... additional operators omitted for brevity
+    };
+
+    // Const iterator factory methods
+    ConstIterator begin() const { return ConstIterator(&amp;data[0]); }
+    ConstIterator end() const { return ConstIterator(&amp;data[10]); }
+};
+
+int main() {
+    IntContainer container;
+
+    // Using our custom iterator
+    std::cout &lt;&lt; &quot;Forward: &quot;;
+    for (auto it = container.begin(); it != container.end(); ++it) {
+        std::cout &lt;&lt; *it &lt;&lt; &quot; &quot;;
+    }
+    std::cout &lt;&lt; std::endl;
+    // Output: 0 1 2 3 4 5 6 7 8 9
+
+    // Random access
+    auto it = container.begin();
+    it += 5;
+    std::cout &lt;&lt; &quot;Element at index 5: &quot; &lt;&lt; *it &lt;&lt; std::endl;  // 5
+
+    // Using STL algorithms with custom iterator
+    std::cout &lt;&lt; &quot;Sum: &quot; &lt;&lt; 
+        std::accumulate(container.begin(), container.end(), 0) &lt;&lt; std::endl;  // 45
+
+    // Range-based for loop works if begin/end are properly defined
+    std::cout &lt;&lt; &quot;Range-based for: &quot;;
+    for (int val : container) {
+        std::cout &lt;&lt; val &lt;&lt; &quot; &quot;;
+    }
+    std::cout &lt;&lt; std::endl;
+}
+</code></pre>
+<h2 id="iterator-best-practices">Iterator Best Practices</h2>
+<ol>
+<li><strong>Use the appropriate iterator type for your needs</strong></li>
+<li><code>const_iterator</code> for read-only access</li>
+<li>
+<p>Regular iterators when you need to modify elements</p>
+</li>
+<li>
+<p><strong>Be aware of iterator invalidation rules</strong></p>
+</li>
+<li>Vector: Insertion/deletion invalidates iterators to elements at or after the point of insertion/deletion</li>
+<li>
+<p>List/Set/Map: Insertion doesn't invalidate existing iterators; deletion invalidates only iterators to the deleted elements</p>
+</li>
+<li>
+<p><strong>Prefer modern C++ idioms</strong></p>
+</li>
+<li>Use <code>auto</code> to simplify iterator declarations</li>
+<li>Use range-based for loops for simple iteration</li>
+<li>
+<p>Use algorithms from <code>&lt;algorithm&gt;</code> header with iterators</p>
+</li>
+<li>
+<p><strong>Performance considerations</strong></p>
+</li>
+<li>Prefer prefix increment (<code>++it</code>) over postfix (<code>it++</code>) for better performance</li>
+<li>Use <code>reserve()</code> on vectors before adding elements to prevent iterator invalidation</li>
+<li>
+<p>Pass large objects by const reference in range-based loops</p>
+</li>
+<li>
+<p><strong>Safety tips</strong></p>
+</li>
+<li>Always check if iterator is valid before dereferencing (not equal to <code>.end()</code>)</li>
+<li>Be cautious with iterator arithmetic to avoid going out of bounds</li>
+<li>
+<p>If modifying a container, reacquire iterators after operations that may invalidate them</p>
+</li>
+<li>
+<p><strong>Iterator adapters</strong></p>
+</li>
+<li>Use <code>std::back_inserter</code> and other inserters for flexible algorithms</li>
+<li>
+<p>Consider using iterator adapters for move semantics with <code>std::make_move_iterator</code></p>
+</li>
+<li>
+<p><strong>Debug techniques</strong></p>
+</li>
+<li>Check distances between iterators with <code>std::distance</code></li>
+<li>Convert iterators to indices for debugging using <code>std::distance</code></li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
